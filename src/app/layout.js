@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Full Stack app",
-  description: "Full Stack React Next.js app",
+  description: "Full Stack React Next.js web application",
 };
 
 export default function RootLayout({ children }) {
