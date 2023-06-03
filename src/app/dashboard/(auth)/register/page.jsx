@@ -1,11 +1,12 @@
 "use client";
+
 import React, { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Register = () => {
-  const [error, setError] = useState(null);
+  const [err, setErr] = useState(false);
 
   const router = useRouter();
 
@@ -27,43 +28,41 @@ const Register = () => {
           password,
         }),
       });
-      res.status === 201 && router.push("/dashboard/login?success=Account has been created");
+
+      res.status === 201 &&
+        router.push("/dashboar/login?success=Account has been created");
     } catch (err) {
-      setError(err);
-      console.log(err);
+      setErr(true);
     }
   };
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Create an Account</h1>
-      <h2 className={styles.subtitle}>Please sign up to see the dashboard.</h2>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Username"
-          required
           className={styles.input}
+          placeholder="username"
+          required
         />
         <input
-          type="text"
-          placeholder="Email"
-          required
+          type="email"
           className={styles.input}
+          placeholder="email"
+          required
         />
         <input
           type="password"
-          placeholder="Password"
-          required
           className={styles.input}
+          placeholder="password"
+          required
         />
         <button className={styles.button}>Register</button>
-        {error && "Something went wrong!"}
       </form>
-      <span className={styles.or}>- OR -</span>
-      <Link className={styles.link} href="/dashboard/login">
-        Login with an existing account
-      </Link>
+
+      {err && "Something went wrong!"}
+
+      <Link href="/dashboard/login">Login with an existing account</Link>
     </div>
   );
 };
