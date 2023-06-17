@@ -4,9 +4,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 async function getData(id) {
-  const res = await fetch(`/api/posts/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://full-stack-react-next-js.vercel.app/api/posts/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
 
   if (!res.ok) {
     console.log(res);
