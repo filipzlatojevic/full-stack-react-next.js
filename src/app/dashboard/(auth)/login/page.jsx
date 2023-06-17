@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./page.module.css";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Login = () => {
   const session = useSession();
@@ -43,7 +44,15 @@ const Login = () => {
         <button className={styles.button}>Login</button>
       </form>
 
-      <button onClick={() => signIn("google")}>Login with Google</button>
+      <button onClick={() => signIn("google")} className={styles.google}>
+        Login with Google
+      </button>
+      <div>
+        Don&apos;t have an account?{" "}
+        <Link className={styles.link} href="/dashboard/register">
+          Sign up
+        </Link>
+      </div>
     </div>
   );
 };

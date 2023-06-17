@@ -16,6 +16,10 @@
   gap: 20px;
 }
 
+.links a:hover {
+  color: #53c28b;
+}
+
 .logout {
   padding: 5px;
   border: none;
